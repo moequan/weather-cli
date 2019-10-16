@@ -7,8 +7,15 @@ const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${ke
   axios
   .get(url)
   .then(res => {
-    const output = res.data.weather
-    console.log(output)
+    const weather = res.data.weather[0].main
+    const kindOfWeather = res.data.weather[0].description;
+    const temp =res.data.main.temp
+
+    console.log(`In ${city}`)
+    console.log(`Today there is ${weather}`)
+    console.log(`It is ${kindOfWeather}`)
+    console.log(`We have ${temp} degree`)
+   
   }).catch(err =>{
       console.log(err)
   })
